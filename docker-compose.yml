@@ -2,9 +2,9 @@ version: "3"
 
 services:
   postgis:
-    image: "mdillon/postgis"
+    image: "mdillon/postgis:latest"
     volumes:
-      - postgis:/var/lib/postgresql/data
+      - /volume/OneBitTinderApi/data/postgis:/var/lib/postgresql/data
 
   app:
     depends_on:
