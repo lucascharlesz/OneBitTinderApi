@@ -12,6 +12,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 5.2.1'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'faker'
+gem 'redis'
 
 
 group :development, :test do
