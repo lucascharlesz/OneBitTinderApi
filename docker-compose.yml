@@ -4,7 +4,7 @@ services:
   postgis:
     image: "mdillon/postgis:latest"
     volumes:
-      - /volume/OneBitTinderApi/data/postgis:/var/lib/postgresql/data
+      - /home/volume/OneBitTinderApi/data/postgis:/var/lib/postgresql/data
 
   app:
     depends_on:
