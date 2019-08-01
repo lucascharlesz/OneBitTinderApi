@@ -19,6 +19,8 @@ RUN mkdir -p $INSTALL_PATH
 # Seta o nosso path como o diretório principal
 WORKDIR $INSTALL_PATH
 
+EXPOSE 3000
+
 # Seta o path para as Gems
 ENV BUNDLE_PATH /gems
 

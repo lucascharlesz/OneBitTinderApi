@@ -28,7 +28,7 @@ class Api::V1::PhotosController < ApplicationController
 
 
   def create_params
-    params.require(:photo).permit(:file, :default)
+    params.require(:photo).permit(:default, :file)
   end
 
 
