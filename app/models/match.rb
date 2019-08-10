@@ -7,7 +7,6 @@ class Match < ApplicationRecord
 
   after_create :notify_users
 
-
   def notify_users
     MatchNotificationJob.perform_now(self)
   end
