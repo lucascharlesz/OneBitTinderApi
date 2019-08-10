@@ -1,5 +1,5 @@
 class Api::V1::ChatController < ApplicationController
-  before_action :set_resource
+  before_action :set_resource, only: :create
 
   def index
     page = params[:page] || 1
@@ -10,7 +10,7 @@ class Api::V1::ChatController < ApplicationController
   end
 
   def create
-    @message = @match.messages.create(body: message_params[:body])
+    @message = @match.messages.create!(user: current_user, body: message_params[:body])
 
     render "api/v1/messages/show"
   end
@@ -18,7 +18,7 @@ class Api::V1::ChatController < ApplicationController
   private
 
   def set_resource
-    @match = current_user.matches.find(match_id: message_params.match_id)
+    @match = current_user.matches.find(message_params[:match_id])
   end
 
   def message_params
