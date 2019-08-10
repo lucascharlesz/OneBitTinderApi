@@ -10,7 +10,9 @@ class Api::V1::ChatController < ApplicationController
   end
 
   def create
-    @match.messages.create(body: message_params[:body])
+    @message = @match.messages.create(body: message_params[:body])
+
+    render "api/v1/messages/show"
   end
 
   private

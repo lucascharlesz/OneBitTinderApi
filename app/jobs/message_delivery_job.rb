@@ -3,15 +3,13 @@ class MessageDeliveryJob < ApplicationJob
   queue_as :default
 
   def perform(message)
-    send_notification(message.match.matcher, message)
-    send_notification(message.match.matchee, message)
+    send_notification(message.match.matcher, message) unless message.match.matcher == message.user
+    send_notification(message.match.matchee, message) unless message.match.matchee == message.user
   end
 
   private
 
   def send_notification(user, message)
-    
-    
     ChatChannel.broadcast_to "chat_channel_#{user.id}", build_message(message)  
   end
 
@@ -20,8 +18,7 @@ class MessageDeliveryJob < ApplicationJob
       message: {
         name: message.user.name,
         timestamp: message.created_at,
-        body: message.body,
-        
+        body: message.body        
       }
     }
 
