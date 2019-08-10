@@ -12,5 +12,5 @@ json.users @users do |user|
   end
 
   default_photo = user.photos.find_by(default: true)
-  json.default_photo_url default_photo.file.attached? ? polymorphic_url(default_photo.file) : ""
+  json.default_photo_url default_photo&.file&.attached? ? polymorphic_url(default_photo.file) : ""
 end
